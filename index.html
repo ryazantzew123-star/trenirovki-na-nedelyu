@@ -186,7 +186,7 @@ td.num{white-space:nowrap;font-weight:600}
   <header class="board">
     <div>
       <h1>Тренировки на неделю</h1>
-      <p class="sub">Три силовых дома, два кикбоксинга. Масса + удар.</p>
+      <p class="sub">Кикбоксинг Пн и Пт, силовые Вт, Чт, Сб. Масса + удар.</p>
     </div>
     <div class="score num">
       <div class="cell w"><span class="v" id="b-weight">65→72</span><span class="l" id="b-weight-l">кг, цель</span></div>
@@ -255,6 +255,26 @@ td.num{white-space:nowrap;font-weight:600}
         <tr><td>Разборные гантели 2 × 12–15 кг</td><td class="num">1.3–2 тыс.</td><td>нормальная прогрессия, см. ниже</td></tr>
         <tr><td>Резиновые петли</td><td class="num">~1 тыс.</td><td>удары с сопротивлением, плечи</td></tr>
       </table></div>
+    </div>
+    <div class="note">
+      <h3>Hard work — цены и расписание</h3>
+      <div class="tbl"><table>
+        <tr><th>Что</th><th>Цена</th></tr>
+        <tr><td>Пробное занятие</td><td class="num">бесплатно</td></tr>
+        <tr><td>Группа — разовая</td><td class="num">700 ₽</td></tr>
+        <tr><td>Группа — 8 занятий (2 в неделю)</td><td class="num">4 000 ₽</td></tr>
+        <tr><td>Группа — 12 занятий</td><td class="num">4 800 ₽</td></tr>
+        <tr><td>Безлимит, 1 тренировка в день</td><td class="num">8 000 ₽</td></tr>
+        <tr><td>Тренажёрка — месяц / 3 месяца</td><td class="num">4 000 / 9 600 ₽</td></tr>
+        <tr><td>Персональная у мастер-тренера</td><td class="num">1 500 ₽</td></tr>
+        <tr><td>Персональная, пакет 4</td><td class="num">5 600 ₽</td></tr>
+        <tr><td>Персональная у топ-мастера</td><td class="num">2 000 ₽</td></tr>
+      </table></div>
+      <ul>
+        <li>Кикбоксинг 18+: Пн, Ср, Пт, 19:00–20:00. Тренер — Тахир Мамедов.</li>
+        <li>Запись на пробное — в их ВК или по телефону +7 992 029-51-63.</li>
+        <li>Спроси, входит ли тренажёрка в безлимит за 8 000 ₽. Если да — это выгоднее, чем группа и зал по отдельности.</li>
+      </ul>
     </div>
     <div class="note">
       <h3>С 3 октября — гантели. Стартовые веса</h3>
@@ -475,7 +495,7 @@ var PLAN = {
  B:{title:"Тренировка Б",kind:"Тяга + ноги",cls:"",list:["pull","row","close","rdl","lunge","hollow"],min:45},
  DA:{title:"Тренировка А · гантели",kind:"Жим + ноги",cls:"",list:["fpress","push","ohp","french","bss","plank"],min:50},
  DB:{title:"Тренировка Б · гантели",kind:"Тяга + ноги",cls:"",list:["row","bbrow","curl","rdl2","lunge","hollow"],min:50},
- K:{title:"Кикбоксинг",kind:"Hard work · Газетная, 19",cls:"p",list:[],min:90},
+ K:{title:"Кикбоксинг",kind:"Hard work · 19:00–20:00 · Газетная, 19",cls:"p",list:[],min:90},
  P:{title:"Сила удара",kind:"Взрыв, коротко",cls:"p",list:["rope","broad","explo","chop","shadow"],min:25},
  R:{title:"Отдых",kind:"Восстановление",cls:"r",list:[],min:0}
 };
@@ -492,9 +512,9 @@ function planFor(d){
   var wk=Math.round((monday(d)-BASE)/(7*864e5)); var odd=((wk%2)+2)%2===1;
   var dow=d.getDay();
   var pre=d>=DB_START?"D":"";
-  if(dow===1||dow===5)return pre+(odd?"B":"A");
-  if(dow===3)return pre+(odd?"A":"B");
-  if(dow===2||dow===6)return "K";
+  if(dow===2||dow===6)return pre+(odd?"B":"A");
+  if(dow===4)return pre+(odd?"A":"B");
+  if(dow===1||dow===5)return "K";
   return "R";
 }
 function fmtDate(k){var p=k.split("-");return +p[2]+"."+p[1];}
@@ -559,14 +579,16 @@ function renderWeek(){
 
   if(type==="K"){
     var ek=entry(ui.sel)||{};
-    html+='<div class="dayhead"><span class="kind p">'+pl.kind+'</span><h3>Кикбоксинг</h3><span class="muted" style="font-size:.9rem">Растяжку-динамику делаешь на разминке в клубе. После — статика 10 минут дома.</span>'+
+    html+='<div class="dayhead"><span class="kind p">'+pl.kind+'</span><h3>Кикбоксинг</h3><span class="muted" style="font-size:.9rem">Взрослая группа 18+, тренер Тахир Мамедов. Разминку и махи делаешь в клубе, дома после — статика 10 минут. Поешь за 2–2,5 часа до, после — шейк.</span>'+
       '<button class="btn '+(ek.club?'':'solid')+'" data-club="1" style="align-self:flex-start;margin-top:4px">'+(ek.club?'✓ Был на тренировке — снять':'Был на тренировке')+'</button></div>';
     html+='<div class="note"><h3>Что сказать тренеру на старте</h3><ul><li>Занимался 5 лет, был перерыв.</li><li>Хочу для себя, не выступать.</li><li>Первые месяцы без спаррингов и без лоу-киков в полную силу.</li></ul></div>';
     html+='<div class="rest-card"><span class="eyebrow">Не получилось дойти</span><p>Тогда 25 минут на взрыв дома — прыжки, взрывные отжимания, бой с тенью.</p><button class="btn" data-home="1" style="align-self:flex-start">Сделать удар дома</button></div>';
     $("#p-week").innerHTML=html; return;
   }
   if(!pl.list.length){
+    var wed=sel.getDay()===3, ew=entry(ui.sel)||{};
     html+='<div class="rest-card"><span class="eyebrow">Отдых</span><h3>Сегодня мышцы растут</h3><ul>'+
+      (wed?'<li>Можно сходить на третий кикбоксинг в 19:00 — если за неделю вес растёт и ешь норму. Если вес стоит — отдыхай. <button class="btn" data-club="1" style="margin-top:6px">'+(ew.club?'✓ Был на кикбоксинге — снять':'Сходил на кикбоксинг')+'</button></li>':'')+
       '<li>Растяжка 10–15 минут — самое время. <button class="btn solid" data-go-str="1" style="margin-top:6px">Открыть растяжку</button></li><li>Еда по плану: 3 100 ккал, творог перед сном.</li><li>Сон 8 часов — рост идёт ночью.</li></ul></div>';
     $("#p-week").innerHTML=html; return;
   }
@@ -608,7 +630,7 @@ $("#p-week").addEventListener("click",function(ev){
   var hw=ev.target.closest("[data-how]"); if(hw){ui.how[hw.dataset.how]=!ui.how[hw.dataset.how];var y=window.scrollY;renderWeek();window.scrollTo(0,y);return;}
   var r=ev.target.closest("[data-rest]"); if(r){startTimer(+r.dataset.rest,r.dataset.name);}
   var sg=ev.target.closest("[data-go-str]"); if(sg){setTab("str");window.scrollTo(0,0);return;}
-  if(ev.target.closest("[data-club]")){var e1=ensure(ui.sel);e1.type="K";e1.club=!e1.club;renderWeek();renderBoard();renderProg();save();return;}
+  if(ev.target.closest("[data-club]")){var e1=ensure(ui.sel);e1.club=!e1.club;e1.type=(e1.club||planFor(parseKey(ui.sel))==="K")?"K":planFor(parseKey(ui.sel));renderWeek();renderBoard();renderProg();save();return;}
   if(ev.target.closest("[data-home]")){var e2=ensure(ui.sel);e2.type="P";e2.club=false;renderWeek();renderBoard();save();return;}
   if(ev.target.closest("[data-back-club]")){var e3=ensure(ui.sel);e3.type="K";renderWeek();renderBoard();save();return;}
 });
