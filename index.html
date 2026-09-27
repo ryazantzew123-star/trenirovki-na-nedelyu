@@ -79,7 +79,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .dpill{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:12px;padding:7px 0 6px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:1px;position:relative}
 .dpill .dn{font:600 .85rem var(--body)}
 .dpill .dt{font:700 .62rem var(--body);letter-spacing:.04em;color:var(--muted);height:14px;display:grid;place-items:center}
-.dpill.t-A .dt,.dpill.t-B .dt{color:var(--red)}
+.dpill.t-A .dt{color:var(--red)}
 .dpill.t-P .dt{color:var(--blue)}
 .dpill.done{background:var(--ok-soft);border-color:var(--ok)}
 .dpill.done .dt{color:var(--ok)}
@@ -186,11 +186,11 @@ td.num{white-space:nowrap;font-weight:600}
   <header class="board">
     <div>
       <h1>Тренировки на неделю</h1>
-      <p class="sub">Дома, своим весом и с рюкзаком. Масса + сила удара.</p>
+      <p class="sub">Три силовых дома, два кикбоксинга. Масса + удар.</p>
     </div>
     <div class="score num">
       <div class="cell w"><span class="v" id="b-weight">65→72</span><span class="l" id="b-weight-l">кг, цель</span></div>
-      <div class="cell"><span class="v" id="b-week">0 / 5</span><span class="l">тренировок за неделю</span></div>
+      <div class="cell"><span class="v" id="b-week">0 / 5</span><span class="l">за неделю</span></div>
       <div class="cell b"><span class="v" id="b-today">—</span><span class="l">сегодня</span></div>
     </div>
   </header>
@@ -257,6 +257,21 @@ td.num{white-space:nowrap;font-weight:600}
       </table></div>
     </div>
     <div class="note">
+      <h3>С 3 октября — гантели. Стартовые веса</h3>
+      <div class="tbl"><table>
+        <tr><th>Упражнение</th><th>Старт</th></tr>
+        <tr><td>Жим лёжа на полу</td><td class="num">2 × 8–10 кг</td></tr>
+        <tr><td>Жим стоя</td><td class="num">2 × 5–6 кг</td></tr>
+        <tr><td>Разгибание из-за головы</td><td class="num">1 × 8 кг</td></tr>
+        <tr><td>Тяга одной рукой</td><td class="num">12–15 кг</td></tr>
+        <tr><td>Тяга штанги в наклоне</td><td class="num">гриф + 10 кг</td></tr>
+        <tr><td>Бицепс</td><td class="num">2 × 6–7 кг</td></tr>
+        <tr><td>Румынская тяга</td><td class="num">2 × 12–15 кг</td></tr>
+        <tr><td>Болгарские, выпады</td><td class="num">2 × 6–8 кг</td></tr>
+      </table></div>
+      <p class="muted">Это ориентир. Если 12 повторов идут легко — добавляй. Если не выходит и 8 — сбрасывай. Первую неделю лучше взять легче и поставить технику.</p>
+    </div>
+    <div class="note">
       <h3>Гантели: что брать</h3>
       <div class="tbl"><table>
         <tr><th>Набор</th><th>Цена WB</th><th>Оценка</th></tr>
@@ -302,19 +317,25 @@ var EX = {
  push:{name:"Отжимания",sets:4,min:8,max:15,unit:"раз",rest:90,how:"Корпус прямой, грудь почти касается пола.",next:"пауза 2 сек внизу или ноги на стул"},
  pike:{name:"Отжимания «домиком»",sets:3,min:6,max:10,unit:"раз",rest:90,how:"Таз вверх, тело углом, опускаешь макушку к полу между ладоней. Качает плечи.",next:"ноги на стул"},
  dips:{name:"Обратные отжимания от дивана",sets:3,min:8,max:12,unit:"раз",rest:90,how:"Руки на край дивана за спиной, опускаешься до 90° в локтях. Плечи не заваливай вперёд.",next:"ноги на стул, рюкзак на колени"},
- bss:{name:"Болгарские выпады",sets:3,min:8,max:12,unit:"на ногу",rest:90,kg:true,how:"Задняя нога на стуле, опускаешься до колена почти у пола. Рюкзак на спину.",next:"+2–3 кг в рюкзак"},
+ bss:{name:"Болгарские выпады",sets:3,min:8,max:12,unit:"на ногу",rest:90,kg:true,how:"Задняя нога на стуле, опускаешься до колена почти у пола. Рюкзак на спину или гантели в руки.",next:"+2–3 кг в рюкзак"},
  bridge:{name:"Ягодичный мост на одной ноге",sets:3,min:10,max:15,unit:"на ногу",rest:60,how:"Лопатки на полу, вторая нога вверх. Наверху пауза 1 сек, сжать ягодицы.",next:"рюкзак на таз"},
  plank:{name:"Планка",sets:3,min:40,max:60,unit:"сек",rest:60,how:"Локти под плечами, пресс и ягодицы напряжены, поясница не провисает.",next:"рюкзак на спину"},
  pull:{name:"Подтягивания или тяга под столом",sets:4,min:6,max:12,unit:"раз",rest:90,how:"Без турника: ложишься под крепкий стол, хват за край, тянешь грудь к столу.",next:"рюкзак на спину"},
- row:{name:"Тяга рюкзака одной рукой",sets:3,min:10,max:12,unit:"на руку",rest:90,kg:true,how:"Колено и ладонь на диване, спина ровная, тянешь рюкзак к поясу локтем назад.",next:"+2–3 кг в рюкзак"},
+ row:{name:"Тяга одной рукой в наклоне",sets:3,min:10,max:12,unit:"на руку",rest:90,kg:true,how:"Колено и ладонь на диване, спина ровная, тянешь рюкзак или гантель к поясу локтем назад.",next:"+2–3 кг в рюкзак"},
  close:{name:"Отжимания узким хватом",sets:3,min:8,max:12,unit:"раз",rest:90,how:"Ладони под грудью, локти вдоль корпуса. Основное — трицепс.",next:"пауза внизу"},
  rdl:{name:"Румынская тяга на одной ноге",sets:3,min:10,max:12,unit:"на ногу",rest:90,kg:true,how:"Рюкзак в руке, корпус наклоняется вперёд, свободная нога уходит назад. Спина прямая.",next:"+2–3 кг в рюкзак"},
- lunge:{name:"Выпады назад",sets:3,min:10,max:12,unit:"на ногу",rest:90,kg:true,how:"Шаг назад, колено почти у пола, толчок передней ногой.",next:"+2–3 кг в рюкзак"},
+ lunge:{name:"Выпады назад",sets:3,min:10,max:12,unit:"на ногу",rest:90,kg:true,how:"Шаг назад, колено почти у пола, толчок передней ногой. Рюкзак или гантели в руках.",next:"+2–3 кг в рюкзак"},
  hollow:{name:"Лодочка",sets:3,min:30,max:40,unit:"сек",rest:60,how:"Лёжа на спине, поясница прижата, ноги и плечи приподняты.",next:"руки за голову"},
  rope:{name:"Скакалка",sets:1,min:3,max:3,unit:"мин",rest:60,how:"Разминка. Легко, на носках.",fixed:true},
  broad:{name:"Прыжки в длину с места",sets:4,min:3,max:3,unit:"прыжка",rest:120,how:"Каждый на максимум. Руки назад, взмах, приземление мягко. Твоя база — 2.8 м.",fixed:true},
  explo:{name:"Взрывные отжимания",sets:4,min:5,max:5,unit:"раз",rest:120,how:"Пока — руками от дивана или стола, толкаешься так, чтобы ладони оторвались.",fixed:true,next:"с пола, потом с хлопком"},
  chop:{name:"«Дровосек» с рюкзаком",sets:3,min:6,max:6,unit:"на сторону",rest:90,kg:true,how:"Рюкзак двумя руками от бедра по диагонали вверх. Разворот идёт от таза, резко.",fixed:true},
+ fpress:{name:"Жим гантелей лёжа на полу",sets:4,min:8,max:12,unit:"раз",rest:90,kg:true,how:"Лёжа на спине, колени согнуты. Опускаешь гантели, пока локти не коснутся пола, пауза, выжимаешь вверх. Главное упражнение на грудь.",next:"+1–2 кг на гантель"},
+ ohp:{name:"Жим гантелей стоя",sets:3,min:8,max:12,unit:"раз",rest:90,kg:true,how:"От плеч вверх над головой. Пресс и ягодицы напряжены, поясницу не прогибай.",next:"+1 кг на гантель"},
+ french:{name:"Разгибание гантели из-за головы",sets:3,min:10,max:12,unit:"раз",rest:60,kg:true,how:"Одна гантель двумя руками. Локти смотрят вверх и не разъезжаются, двигается только предплечье.",next:"+1–2 кг"},
+ bbrow:{name:"Тяга штанги в наклоне",sets:3,min:8,max:12,unit:"раз",rest:90,kg:true,how:"Гриф из набора, хват сверху. Наклон градусов 45, спина прямая, тянешь к поясу локтями назад.",next:"+2,5 кг"},
+ curl:{name:"Сгибания на бицепс",sets:3,min:10,max:12,unit:"раз",rest:60,kg:true,how:"Локти прижаты к корпусу, без раскачки. Вниз медленнее, чем вверх.",next:"+1 кг на гантель"},
+ rdl2:{name:"Румынская тяга с гантелями",sets:4,min:8,max:12,unit:"раз",rest:90,kg:true,how:"Колени чуть согнуты, таз уходит назад, гантели скользят по бёдрам до середины голени. Спина прямая, тянет заднюю поверхность.",next:"+2 кг на гантель"},
  shadow:{name:"Бой с тенью на взрыв",sets:3,min:2,max:2,unit:"мин",rest:60,how:"Двигаешься легко, каждые 10–15 сек серия из 3–5 ударов на полной скорости. Толчок задней ногой, выдох.",fixed:true}
 };
 /* ---------- схемы: старт → финиш (вид сбоку, пол y=92) ---------- */
@@ -364,8 +385,26 @@ var PICS = {
   {H:[63,20],S:[60,30],P:[57,54],K:[50,72],F:[46,90],K2:[70,72],F2:[74,90],E:[66,42],W:[70,28],E2:[62,44],W2:[66,32]},
   {H:[65,20],S:[62,30],P:[57,54],K:[50,72],F:[44,90],K2:[70,72],F2:[76,90],E:[78,31],W:[94,30],E2:[62,44],W2:[66,32]}]}
 };
+PICS.fpress={frames:[
+  {H:[18,84],S:[28,86],P:[58,88],K:[72,70],F:[84,90],E:[28,72],W:[28,58],pack:"hand"},
+  {H:[18,84],S:[28,86],P:[58,88],K:[72,70],F:[84,90],E:[36,89],W:[36,76],pack:"hand"}]};
+PICS.ohp={frames:[
+  {H:[61,18],S:[60,28],P:[60,54],K:[61,72],F:[60,90],E:[66,40],W:[66,28],pack:"hand"},
+  {H:[61,18],S:[60,28],P:[60,54],K:[61,72],F:[60,90],E:[62,15],W:[62,4],pack:"hand"}]};
+PICS.french={frames:[
+  {H:[61,18],S:[60,28],P:[60,54],K:[61,72],F:[60,90],E:[62,10],W:[50,22],pack:"hand"},
+  {H:[61,18],S:[60,28],P:[60,54],K:[61,72],F:[60,90],E:[62,12],W:[63,3],pack:"hand"}]};
+PICS.curl={frames:[
+  {H:[61,18],S:[60,28],P:[60,54],K:[61,72],F:[60,90],E:[60,42],W:[61,56],pack:"hand"},
+  {H:[61,18],S:[60,28],P:[60,54],K:[61,72],F:[60,90],E:[60,42],W:[70,31],pack:"hand"}]};
+PICS.bbrow={frames:[
+  {H:[85,32],S:[76,38],P:[50,54],K:[56,72],F:[52,90],E:[76,52],W:[76,66],pack:"hand"},
+  {H:[85,32],S:[76,38],P:[50,54],K:[56,72],F:[52,90],E:[62,44],W:[68,57],pack:"hand"}]};
+PICS.rdl2={frames:[
+  {H:[61,18],S:[60,28],P:[60,54],K:[61,72],F:[60,90],E:[60,40],W:[60,52],pack:"hand"},
+  {H:[92,42],S:[82,46],P:[50,52],K:[58,72],F:[56,90],E:[82,58],W:[82,70],pack:"hand"}]};
 PICS.close=PICS.push;
-var VQ={push:"отжимания от пола правильная техника",pike:"pike push ups отжимания домиком техника",dips:"обратные отжимания от скамьи техника",bss:"болгарские сплит приседания техника",bridge:"ягодичный мост на одной ноге техника",plank:"планка на локтях правильная техника",pull:"тяга под столом австралийские подтягивания дома",row:"тяга гантели одной рукой в наклоне с упором техника",close:"отжимания узким хватом на трицепс техника",rdl:"румынская тяга на одной ноге техника",lunge:"выпады назад техника",hollow:"лодочка hollow body hold техника",broad:"прыжок в длину с места техника",explo:"взрывные отжимания от скамьи",chop:"дровосек упражнение woodchop техника",shadow:"бой с тенью для начинающих кикбоксинг"};
+var VQ={fpress:"жим гантелей лежа на полу floor press техника",ohp:"жим гантелей стоя техника",french:"разгибание гантели из-за головы двумя руками техника",bbrow:"тяга штанги в наклоне техника",curl:"сгибания рук с гантелями на бицепс техника",rdl2:"румынская тяга с гантелями техника",push:"отжимания от пола правильная техника",pike:"pike push ups отжимания домиком техника",dips:"обратные отжимания от скамьи техника",bss:"болгарские сплит приседания техника",bridge:"ягодичный мост на одной ноге техника",plank:"планка на локтях правильная техника",pull:"тяга под столом австралийские подтягивания дома",row:"тяга гантели одной рукой в наклоне с упором техника",close:"отжимания узким хватом на трицепс техника",rdl:"румынская тяга на одной ноге техника",lunge:"выпады назад техника",hollow:"лодочка hollow body hold техника",broad:"прыжок в длину с места техника",explo:"взрывные отжимания от скамьи",chop:"дровосек упражнение woodchop техника",shadow:"бой с тенью для начинающих кикбоксинг"};
 
 function limb(a,b,c,col,w){var s='<polyline points="'+a[0]+','+a[1]+' '+b[0]+','+b[1]+(c?' '+c[0]+','+c[1]:'')+'" fill="none" stroke="'+col+'" stroke-width="'+w+'" stroke-linecap="round" stroke-linejoin="round"/>';return s;}
 function drawFrame(p,props,label){
@@ -391,7 +430,7 @@ function picHtml(id){
       return '<figure>'+drawFrame(f,pc.props,EX[id].name+': '+lbl)+'<figcaption>'+lbl+'</figcaption></figure>'+(i===0&&pc.frames.length>1?'<span class="parrow" aria-hidden="true">→</span>':'');
     }).join("")+'</div>';
   }
-  h+='<p class="legend"><i style="background:var(--red)"></i>рука ближе к тебе <i style="background:var(--muted)"></i>дальняя <i style="background:var(--blue)"></i>рюкзак</p>';
+  h+='<p class="legend"><i style="background:var(--red)"></i>рука ближе к тебе <i style="background:var(--muted)"></i>дальняя <i style="background:var(--blue)"></i>рюкзак / гантель</p>';
   if(VQ[id])h+='<a class="vid" href="https://www.youtube.com/results?search_query='+encodeURIComponent(VQ[id])+'" target="_blank" rel="noopener">▶ Видео на YouTube</a>';
   return h;
 }
@@ -434,12 +473,17 @@ function renderStr(){$("#p-str").innerHTML=strHtml();}
 var PLAN = {
  A:{title:"Тренировка А",kind:"Жим + ноги",cls:"",list:["push","pike","dips","bss","bridge","plank"],min:45},
  B:{title:"Тренировка Б",kind:"Тяга + ноги",cls:"",list:["pull","row","close","rdl","lunge","hollow"],min:45},
+ DA:{title:"Тренировка А · гантели",kind:"Жим + ноги",cls:"",list:["fpress","push","ohp","french","bss","plank"],min:50},
+ DB:{title:"Тренировка Б · гантели",kind:"Тяга + ноги",cls:"",list:["row","bbrow","curl","rdl2","lunge","hollow"],min:50},
+ K:{title:"Кикбоксинг",kind:"Hard work · Газетная, 19",cls:"p",list:[],min:90},
  P:{title:"Сила удара",kind:"Взрыв, коротко",cls:"p",list:["rope","broad","explo","chop","shadow"],min:25},
  R:{title:"Отдых",kind:"Восстановление",cls:"r",list:[],min:0}
 };
 var DN=["Вс","Пн","Вт","Ср","Чт","Пт","Сб"];
 var DNF=["Воскресенье","Понедельник","Вторник","Среда","Четверг","Пятница","Суббота"];
-var BASE=new Date(2026,8,28); /* понедельник, неделя 0: А Б А */
+var BASE=new Date(2026,8,28), DB_START=new Date(2026,9,3); /* с 3 октября — гантели */
+var SHORT={A:"А",B:"Б",DA:"А",DB:"Б",P:"удар",K:"клуб",R:"—"};
+function tcls(t){return t==="K"||t==="P"?"P":t==="R"?"R":"A";} /* понедельник, неделя 0: А Б А */
 
 function pad(n){return n<10?"0"+n:""+n;}
 function key(d){return d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate());}
@@ -447,9 +491,10 @@ function monday(d){var x=new Date(d.getFullYear(),d.getMonth(),d.getDate());var 
 function planFor(d){
   var wk=Math.round((monday(d)-BASE)/(7*864e5)); var odd=((wk%2)+2)%2===1;
   var dow=d.getDay();
-  if(dow===1||dow===5)return odd?"B":"A";
-  if(dow===3)return odd?"A":"B";
-  if(dow===2||dow===6)return "P";
+  var pre=d>=DB_START?"D":"";
+  if(dow===1||dow===5)return pre+(odd?"B":"A");
+  if(dow===3)return pre+(odd?"A":"B");
+  if(dow===2||dow===6)return "K";
   return "R";
 }
 function fmtDate(k){var p=k.split("-");return +p[2]+"."+p[1];}
@@ -469,6 +514,7 @@ function ensure(k){
 function parseKey(k){var p=k.split("-");return new Date(+p[0],+p[1]-1,+p[2]);}
 function isDone(e){
   if(!e)return false;
+  if(e.type==="K")return !!e.club;
   var pl=PLAN[e.type]; if(!pl||!pl.list.length)return false;
   return pl.list.every(function(id){var s=(e.sets||{})[id]||[];return s.filter(function(v){return v>0;}).length>=EX[id].sets;});
 }
@@ -491,7 +537,7 @@ function renderBoard(){
   var m=monday(NOW), done=0;
   for(var i=0;i<7;i++){var d=new Date(m);d.setDate(m.getDate()+i);if(isDone(entry(key(d))))done++;}
   $("#b-week").textContent=done+" / 5";
-  var t=PLAN[planFor(NOW)]; $("#b-today").textContent=t===PLAN.R?"отдых":(planFor(NOW)==="P"?"удар":planFor(NOW));
+  var tt=(entry(TODAYK)||{}).type||planFor(NOW); $("#b-today").textContent=tt==="R"?"отдых":SHORT[tt];
   var w=state.weights.slice().sort(function(a,b){return a.k<b.k?-1:1;});
   if(w.length){$("#b-weight").textContent=w[w.length-1].v.toFixed(1).replace(".",",")+"→72";$("#b-weight-l").textContent="кг сейчас → цель";}
   else{$("#b-weight").textContent="65→72";$("#b-weight-l").textContent="кг, цель";}
@@ -505,18 +551,26 @@ function renderWeek(){
   html+='<div class="panel-head"><h2>'+DNF[sel.getDay()]+', '+fmtDate(ui.sel)+'</h2>'+(ui.sel===TODAYK?'<span class="eyebrow">сегодня</span>':'')+'</div>';
   html+='<div class="strip">';
   for(var i=0;i<7;i++){
-    var d=new Date(m);d.setDate(m.getDate()+i);var k=key(d),t=planFor(d),e=entry(k);
-    var lbl=t==="R"?"—":(t==="P"?"удар":t);
-    html+='<button class="dpill t-'+t+(k===TODAYK?' today':'')+(isDone(e)?' done':'')+'" data-day="'+k+'" aria-pressed="'+(k===ui.sel)+'" aria-label="'+DNF[d.getDay()]+': '+PLAN[t].title+'"><span class="dn">'+DN[d.getDay()]+'</span><span class="dt">'+(isDone(e)?'✓':lbl)+'</span></button>';
+    var d=new Date(m);d.setDate(m.getDate()+i);var k=key(d),e=entry(k),t=(e&&e.type)||planFor(d);
+    var lbl=SHORT[t];
+    html+='<button class="dpill t-'+tcls(t)+(k===TODAYK?' today':'')+(isDone(e)?' done':'')+'" data-day="'+k+'" aria-pressed="'+(k===ui.sel)+'" aria-label="'+DNF[d.getDay()]+': '+PLAN[t].title+'"><span class="dn">'+DN[d.getDay()]+'</span><span class="dt">'+(isDone(e)?'✓':lbl)+'</span></button>';
   }
   html+='</div>';
 
+  if(type==="K"){
+    var ek=entry(ui.sel)||{};
+    html+='<div class="dayhead"><span class="kind p">'+pl.kind+'</span><h3>Кикбоксинг</h3><span class="muted" style="font-size:.9rem">Растяжку-динамику делаешь на разминке в клубе. После — статика 10 минут дома.</span>'+
+      '<button class="btn '+(ek.club?'':'solid')+'" data-club="1" style="align-self:flex-start;margin-top:4px">'+(ek.club?'✓ Был на тренировке — снять':'Был на тренировке')+'</button></div>';
+    html+='<div class="note"><h3>Что сказать тренеру на старте</h3><ul><li>Занимался 5 лет, был перерыв.</li><li>Хочу для себя, не выступать.</li><li>Первые месяцы без спаррингов и без лоу-киков в полную силу.</li></ul></div>';
+    html+='<div class="rest-card"><span class="eyebrow">Не получилось дойти</span><p>Тогда 25 минут на взрыв дома — прыжки, взрывные отжимания, бой с тенью.</p><button class="btn" data-home="1" style="align-self:flex-start">Сделать удар дома</button></div>';
+    $("#p-week").innerHTML=html; return;
+  }
   if(!pl.list.length){
     html+='<div class="rest-card"><span class="eyebrow">Отдых</span><h3>Сегодня мышцы растут</h3><ul>'+
       '<li>Растяжка 10–15 минут — самое время. <button class="btn solid" data-go-str="1" style="margin-top:6px">Открыть растяжку</button></li><li>Еда по плану: 3 100 ккал, творог перед сном.</li><li>Сон 8 часов — рост идёт ночью.</li></ul></div>';
     $("#p-week").innerHTML=html; return;
   }
-  html+='<div class="dayhead"><span class="kind '+pl.cls+'">'+pl.kind+'</span><h3>'+pl.title+'</h3><span class="muted" style="font-size:.9rem">~'+pl.min+' минут · '+pl.list.length+' упражнений · отдых по таймеру</span><button class="btn" data-go-str="1" style="align-self:flex-start;margin-top:4px">Сначала 5 мин махов — вкладка «Растяжка»</button></div>';
+  html+='<div class="dayhead"><span class="kind '+pl.cls+'">'+pl.kind+'</span><h3>'+pl.title+'</h3><span class="muted" style="font-size:.9rem">~'+pl.min+' минут · '+pl.list.length+' упражнений · отдых по таймеру</span><button class="btn" data-go-str="1" style="align-self:flex-start;margin-top:4px">Сначала 5 мин махов — вкладка «Растяжка»</button>'+(type==="P"&&planFor(sel)==="K"?'<button class="btn" data-back-club="1" style="align-self:flex-start">Вернуть: кикбоксинг</button>':'')+'</div>';
 
   var e=entry(ui.sel)||{sets:{},kg:{}};
   html+=pl.list.map(function(id,idx){
@@ -553,7 +607,10 @@ $("#p-week").addEventListener("click",function(ev){
   var d=ev.target.closest("[data-day]"); if(d){ui.sel=d.dataset.day;renderWeek();return;}
   var hw=ev.target.closest("[data-how]"); if(hw){ui.how[hw.dataset.how]=!ui.how[hw.dataset.how];var y=window.scrollY;renderWeek();window.scrollTo(0,y);return;}
   var r=ev.target.closest("[data-rest]"); if(r){startTimer(+r.dataset.rest,r.dataset.name);}
-  var sg=ev.target.closest("[data-go-str]"); if(sg){setTab("str");window.scrollTo(0,0);}
+  var sg=ev.target.closest("[data-go-str]"); if(sg){setTab("str");window.scrollTo(0,0);return;}
+  if(ev.target.closest("[data-club]")){var e1=ensure(ui.sel);e1.type="K";e1.club=!e1.club;renderWeek();renderBoard();renderProg();save();return;}
+  if(ev.target.closest("[data-home]")){var e2=ensure(ui.sel);e2.type="P";e2.club=false;renderWeek();renderBoard();save();return;}
+  if(ev.target.closest("[data-back-club]")){var e3=ensure(ui.sel);e3.type="K";renderWeek();renderBoard();save();return;}
 });
 $("#p-week").addEventListener("change",function(ev){
   var t=ev.target, e;
@@ -615,7 +672,7 @@ function renderProg(){
   }else html+='<p class="empty">Пока пусто. Первое взвешивание: 14.06 было 65,4 кг.</p>';
   html+='</div>';
 
-  var ks=Object.keys(state.log).filter(function(k){return filled(state.log[k])>0;}).sort().reverse();
+  var ks=Object.keys(state.log).filter(function(k){return filled(state.log[k])>0||state.log[k].club;}).sort().reverse();
   html+='<div class="card"><h3>Лучшее по упражнениям</h3>';
   var ids=Object.keys(EX).filter(function(id){return ks.some(function(k){return ((state.log[k].sets||{})[id]||[]).some(function(v){return v>0;});});});
   if(ids.length){
@@ -631,7 +688,7 @@ function renderProg(){
   html+='<div class="card"><h3>История</h3>';
   if(ks.length){
     html+='<div class="tbl"><table><tr><th>Дата</th><th>Что</th><th>Подходов</th></tr>'+ks.slice(0,12).map(function(k){
-      var e=state.log[k];return '<tr><td class="num">'+fmtDate(k)+'</td><td>'+PLAN[e.type].title+(isDone(e)?' ✓':'')+'</td><td class="num">'+filled(e)+'</td></tr>';
+      var e=state.log[k];return '<tr><td class="num">'+fmtDate(k)+'</td><td>'+PLAN[e.type].title+(isDone(e)?' ✓':'')+'</td><td class="num">'+(e.type==="K"?'—':filled(e))+'</td></tr>';
     }).join("")+'</table></div>';
   }else html+='<p class="empty">Тренировок пока нет.</p>';
   html+='<span class="sync'+(ui.sync==="cloud"?' cloud':'')+'"><i></i>'+(ui.sync==="cloud"?'Всё сохраняется само — с телефона и компьютера одно и то же':'Сохраняется только на этом устройстве')+'</span>';
