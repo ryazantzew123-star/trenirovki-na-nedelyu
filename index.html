@@ -229,6 +229,15 @@ td.num{white-space:nowrap;font-weight:600}
       </ul>
     </div>
     <div class="note">
+      <h3>Кисти в боксе</h3>
+      <ul>
+        <li><b>Всегда бинтуй</b> под перчатки, даже на лёгкой работе по мешку.</li>
+        <li>Бей <b>первыми двумя костяшками</b> — указательного и среднего пальцев.</li>
+        <li><b>Запястье прямое</b>, одной линией с предплечьем. Кулак сжимаешь в момент удара, между ударами расслабляешь.</li>
+        <li>Кисти ломает не слабость, а удар с согнутым запястьем. Упражнения на кисти стоят в конце тренировок А и Б.</li>
+      </ul>
+    </div>
+    <div class="note">
       <h3>Если забились мышцы</h3>
       <ul>
         <li>Пик боли на вторые сутки, отпускает к третьим–четвёртым. Через 2–3 недели почти исчезает.</li>
@@ -356,6 +365,12 @@ var EX = {
  bbrow:{name:"Тяга штанги в наклоне",sets:3,min:8,max:12,unit:"раз",rest:90,kg:true,how:"Гриф из набора, хват сверху. Наклон градусов 45, спина прямая, тянешь к поясу локтями назад.",next:"+2,5 кг"},
  curl:{name:"Сгибания на бицепс",sets:3,min:10,max:12,unit:"раз",rest:60,kg:true,how:"Локти прижаты к корпусу, без раскачки. Вниз медленнее, чем вверх.",next:"+1 кг на гантель"},
  rdl2:{name:"Румынская тяга с гантелями",sets:4,min:8,max:12,unit:"раз",rest:90,kg:true,how:"Колени чуть согнуты, таз уходит назад, гантели скользят по бёдрам до середины голени. Спина прямая, тянет заднюю поверхность.",next:"+2 кг на гантель"},
+ tyson:{name:"Отжимания Тайсона",sets:3,min:6,max:12,unit:"раз",rest:90,how:"Стопы упираются в стену. Отжался — сразу толкаешься назад в «домик»: таз вверх, колени чуть согнуты. Из домика взрывом вперёд в упор лёжа и следующее отжимание. Корпус прямой, поясница не провисает.",next:"четвёртый подход"},
+ fistpush:{name:"Отжимания на кулаках",sets:3,min:8,max:12,unit:"раз",rest:60,how:"На коврике или сложенном полотенце. Упор на первые две костяшки, запястье прямое, одной линией с предплечьем — как в момент удара.",next:"пауза 2 сек внизу"},
+ wcurl:{name:"Сгибания кисти",sets:3,min:12,max:15,unit:"раз",rest:45,kg:true,how:"Сидя, предплечье на колене, ладонь вверх, кисть свисает. Поднимаешь гантель только кистью, предплечье не двигается.",next:"+1 кг"},
+ wext:{name:"Разгибания кисти",sets:3,min:12,max:15,unit:"раз",rest:45,kg:true,how:"Так же, но ладонь вниз. Вес бери легче, чем в сгибаниях: разгибатели слабее, и именно они держат кисть при ударе.",next:"+0,5–1 кг"},
+ wrad:{name:"«Молоток» для кисти",sets:2,min:10,max:12,unit:"на сторону",rest:45,kg:true,how:"Гриф гантели с блином только на одном конце, держишь за другой, как молоток. Наклоняешь груз вверх-вниз только кистью. Укрепляет кисть от «подламывания» вбок.",next:"блин тяжелее"},
+ fext:{name:"Разгибание пальцев с резинкой",sets:2,min:20,max:25,unit:"раз",rest:30,how:"Канцелярская резинка на все пять пальцев. Раскрываешь ладонь до упора, медленно возвращаешь. Балансирует сильный хват после скалолазания.",next:"две резинки"},
  shadow:{name:"Бой с тенью на взрыв",sets:3,min:2,max:2,unit:"мин",rest:60,how:"Двигаешься легко, каждые 10–15 сек серия из 3–5 ударов на полной скорости. Толчок задней ногой, выдох.",fixed:true}
 };
 /* ---------- схемы: старт → финиш (вид сбоку, пол y=92) ---------- */
@@ -424,7 +439,9 @@ PICS.rdl2={frames:[
   {H:[61,18],S:[60,28],P:[60,54],K:[61,72],F:[60,90],E:[60,40],W:[60,52],pack:"hand"},
   {H:[92,42],S:[82,46],P:[50,52],K:[58,72],F:[56,90],E:[82,58],W:[82,70],pack:"hand"}]};
 PICS.close=PICS.push;
-var VQ={fpress:"жим гантелей лежа на полу floor press техника",ohp:"жим гантелей стоя техника",french:"разгибание гантели из-за головы двумя руками техника",bbrow:"тяга штанги в наклоне техника",curl:"сгибания рук с гантелями на бицепс техника",rdl2:"румынская тяга с гантелями техника",push:"отжимания от пола правильная техника",pike:"pike push ups отжимания домиком техника",dips:"обратные отжимания от скамьи техника",bss:"болгарские сплит приседания техника",bridge:"ягодичный мост на одной ноге техника",plank:"планка на локтях правильная техника",pull:"тяга под столом австралийские подтягивания дома",row:"тяга гантели одной рукой в наклоне с упором техника",close:"отжимания узким хватом на трицепс техника",rdl:"румынская тяга на одной ноге техника",lunge:"выпады назад техника",hollow:"лодочка hollow body hold техника",broad:"прыжок в длину с места техника",explo:"взрывные отжимания от скамьи",chop:"дровосек упражнение woodchop техника",shadow:"бой с тенью для начинающих кикбоксинг"};
+PICS.fistpush=PICS.push;
+PICS.tyson={frames:[PICS.push.frames[0],PICS.pike.frames[0]]};
+var VQ={tyson:"mike tyson push ups отжимания тайсона техника",fistpush:"отжимания на кулаках техника бокс",wcurl:"сгибания кисти с гантелью сидя",wext:"обратные сгибания кисти с гантелью",wrad:"упражнение молоток для запястья с гантелью",fext:"разгибание пальцев с резинкой упражнение",fpress:"жим гантелей лежа на полу floor press техника",ohp:"жим гантелей стоя техника",french:"разгибание гантели из-за головы двумя руками техника",bbrow:"тяга штанги в наклоне техника",curl:"сгибания рук с гантелями на бицепс техника",rdl2:"румынская тяга с гантелями техника",push:"отжимания от пола правильная техника",pike:"pike push ups отжимания домиком техника",dips:"обратные отжимания от скамьи техника",bss:"болгарские сплит приседания техника",bridge:"ягодичный мост на одной ноге техника",plank:"планка на локтях правильная техника",pull:"тяга под столом австралийские подтягивания дома",row:"тяга гантели одной рукой в наклоне с упором техника",close:"отжимания узким хватом на трицепс техника",rdl:"румынская тяга на одной ноге техника",lunge:"выпады назад техника",hollow:"лодочка hollow body hold техника",broad:"прыжок в длину с места техника",explo:"взрывные отжимания от скамьи",chop:"дровосек упражнение woodchop техника",shadow:"бой с тенью для начинающих кикбоксинг"};
 
 function limb(a,b,c,col,w){var s='<polyline points="'+a[0]+','+a[1]+' '+b[0]+','+b[1]+(c?' '+c[0]+','+c[1]:'')+'" fill="none" stroke="'+col+'" stroke-width="'+w+'" stroke-linecap="round" stroke-linejoin="round"/>';return s;}
 function drawFrame(p,props,label){
@@ -450,7 +467,7 @@ function picHtml(id){
       return '<figure>'+drawFrame(f,pc.props,EX[id].name+': '+lbl)+'<figcaption>'+lbl+'</figcaption></figure>'+(i===0&&pc.frames.length>1?'<span class="parrow" aria-hidden="true">→</span>':'');
     }).join("")+'</div>';
   }
-  h+='<p class="legend"><i style="background:var(--red)"></i>рука ближе к тебе <i style="background:var(--muted)"></i>дальняя <i style="background:var(--blue)"></i>рюкзак / гантель</p>';
+  if(pc)h+='<p class="legend"><i style="background:var(--red)"></i>рука ближе к тебе <i style="background:var(--muted)"></i>дальняя <i style="background:var(--blue)"></i>рюкзак / гантель</p>';
   if(VQ[id])h+='<a class="vid" href="https://www.youtube.com/results?search_query='+encodeURIComponent(VQ[id])+'" target="_blank" rel="noopener">▶ Видео на YouTube</a>';
   return h;
 }
@@ -492,9 +509,10 @@ function renderStr(){$("#p-str").innerHTML=strHtml();}
 
 var PLAN = {
  A:{title:"Тренировка А",kind:"Жим + ноги",cls:"",list:["push","pike","dips","bss","bridge","plank"],min:45},
- B:{title:"Тренировка Б",kind:"Тяга + ноги",cls:"",list:["pull","row","close","rdl","lunge","hollow"],min:45},
- DA:{title:"Тренировка А · гантели",kind:"Жим + ноги",cls:"",list:["fpress","push","ohp","french","bss","plank"],min:50},
- DB:{title:"Тренировка Б · гантели",kind:"Тяга + ноги",cls:"",list:["row","bbrow","curl","rdl2","lunge","hollow"],min:50},
+ B:{title:"Тренировка Б",kind:"Тяга + ноги",cls:"",list:["pull","row","close","rdl","lunge","hollow","tyson","fistpush"],min:55},
+ DA:{title:"Тренировка А · гантели",kind:"Жим + ноги",cls:"",list:["fpress","push","ohp","french","bss","plank","fistpush","wcurl","wext"],min:60},
+ DB:{title:"Тренировка Б · гантели",kind:"Тяга + ноги",cls:"",list:["row","bbrow","curl","rdl2","lunge","hollow","tyson","wrad","fext"],min:60},
+ BX:{title:"Бокс — пробная",kind:"Hard work · 11:00 · Газетная, 19",cls:"p",list:[],min:60},
  K:{title:"Кикбоксинг",kind:"Hard work · 19:00–20:00 · Газетная, 19",cls:"p",list:[],min:90},
  P:{title:"Сила удара",kind:"Взрыв, коротко",cls:"p",list:["rope","broad","explo","chop","shadow"],min:25},
  R:{title:"Отдых",kind:"Восстановление",cls:"r",list:[],min:0}
@@ -502,13 +520,19 @@ var PLAN = {
 var DN=["Вс","Пн","Вт","Ср","Чт","Пт","Сб"];
 var DNF=["Воскресенье","Понедельник","Вторник","Среда","Четверг","Пятница","Суббота"];
 var BASE=new Date(2026,8,28), DB_START=new Date(2026,9,3); /* с 3 октября — гантели */
-var SHORT={A:"А",B:"Б",DA:"А",DB:"Б",P:"удар",K:"клуб",R:"—"};
-function tcls(t){return t==="K"||t==="P"?"P":t==="R"?"R":"A";} /* понедельник, неделя 0: А Б А */
+var SHORT={A:"А",B:"Б",DA:"А",DB:"Б",P:"удар",K:"клуб",BX:"бокс",R:"—"};
+function tcls(t){return t==="K"||t==="BX"||t==="P"?"P":t==="R"?"R":"A";} /* понедельник, неделя 0: А Б А */
 
 function pad(n){return n<10?"0"+n:""+n;}
 function key(d){return d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate());}
 function monday(d){var x=new Date(d.getFullYear(),d.getMonth(),d.getDate());var w=(x.getDay()+6)%7;x.setDate(x.getDate()-w);return x;}
+var OVERRIDE={"2026-10-03":"BX","2026-10-04":"@2026-10-03"}; /* сб — пробный бокс, силовая А переезжает на вс */
 function planFor(d){
+  var o=OVERRIDE[key(d)];
+  if(o)return o.charAt(0)==="@"?basePlan(parseKey(o.slice(1))):o;
+  return basePlan(d);
+}
+function basePlan(d){
   var wk=Math.round((monday(d)-BASE)/(7*864e5)); var odd=((wk%2)+2)%2===1;
   var dow=d.getDay();
   var pre=d>=DB_START?"D":"";
@@ -534,7 +558,7 @@ function ensure(k){
 function parseKey(k){var p=k.split("-");return new Date(+p[0],+p[1]-1,+p[2]);}
 function isDone(e){
   if(!e)return false;
-  if(e.type==="K")return !!e.club;
+  if(e.type==="K"||e.type==="BX")return !!e.club;
   var pl=PLAN[e.type]; if(!pl||!pl.list.length)return false;
   return pl.list.every(function(id){var s=(e.sets||{})[id]||[];return s.filter(function(v){return v>0;}).length>=EX[id].sets;});
 }
@@ -577,6 +601,14 @@ function renderWeek(){
   }
   html+='</div>';
 
+  if(type==="BX"){
+    var eb=entry(ui.sel)||{};
+    html+='<div class="dayhead"><span class="kind p">'+pl.kind+'</span><h3>Бокс — пробная тренировка</h3><span class="muted" style="font-size:.9rem">Силовая А с гантелями — завтра, в воскресенье.</span>'+
+      '<button class="btn '+(eb.club?'':'solid')+'" data-club="1" style="align-self:flex-start;margin-top:4px">'+(eb.club?'✓ Сходил — снять':'Сходил на тренировку')+'</button></div>';
+    html+='<div class="note"><h3>Взять с собой</h3><ul><li>Спортивные штаны или шорты, футболка.</li><li><b>Чистые кроссовки для зала</b> — в боксе занимаются в обуви.</li><li>Вода, полотенце.</li><li>Перчатки на пробной обычно дают — спроси на входе.</li></ul></div>';
+    html+='<div class="note"><h3>Как пройти</h3><ul><li>Завтрак в 8:30–9:00: овсянка и пара яиц.</li><li>Прийти за 10 минут.</li><li>Сказать тренеру: занимался кикбоксингом 5 лет, был перерыв, хожу для себя, спарринги пока не нужны.</li><li>Первый раз — вполсилы: смотришь, как ставят, задаёшь вопросы.</li><li>После — шейк или обед в течение часа.</li></ul></div>';
+    $("#p-week").innerHTML=html; return;
+  }
   if(type==="K"){
     var ek=entry(ui.sel)||{};
     html+='<div class="dayhead"><span class="kind p">'+pl.kind+'</span><h3>Кикбоксинг</h3><span class="muted" style="font-size:.9rem">Взрослая группа 18+, тренер Тахир Мамедов. Разминку и махи делаешь в клубе, дома после — статика 10 минут. Поешь за 2–2,5 часа до, после — шейк.</span>'+
@@ -630,7 +662,7 @@ $("#p-week").addEventListener("click",function(ev){
   var hw=ev.target.closest("[data-how]"); if(hw){ui.how[hw.dataset.how]=!ui.how[hw.dataset.how];var y=window.scrollY;renderWeek();window.scrollTo(0,y);return;}
   var r=ev.target.closest("[data-rest]"); if(r){startTimer(+r.dataset.rest,r.dataset.name);}
   var sg=ev.target.closest("[data-go-str]"); if(sg){setTab("str");window.scrollTo(0,0);return;}
-  if(ev.target.closest("[data-club]")){var e1=ensure(ui.sel);e1.club=!e1.club;e1.type=(e1.club||planFor(parseKey(ui.sel))==="K")?"K":planFor(parseKey(ui.sel));renderWeek();renderBoard();renderProg();save();return;}
+  if(ev.target.closest("[data-club]")){var e1=ensure(ui.sel),pf=planFor(parseKey(ui.sel));e1.club=!e1.club;e1.type=pf==="BX"?"BX":((e1.club||pf==="K")?"K":pf);renderWeek();renderBoard();renderProg();save();return;}
   if(ev.target.closest("[data-home]")){var e2=ensure(ui.sel);e2.type="P";e2.club=false;renderWeek();renderBoard();save();return;}
   if(ev.target.closest("[data-back-club]")){var e3=ensure(ui.sel);e3.type="K";renderWeek();renderBoard();save();return;}
 });
