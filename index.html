@@ -526,7 +526,7 @@ function tcls(t){return t==="K"||t==="BX"||t==="P"?"P":t==="R"?"R":"A";} /* по
 function pad(n){return n<10?"0"+n:""+n;}
 function key(d){return d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate());}
 function monday(d){var x=new Date(d.getFullYear(),d.getMonth(),d.getDate());var w=(x.getDay()+6)%7;x.setDate(x.getDate()-w);return x;}
-var OVERRIDE={"2026-10-03":"BX","2026-10-04":"@2026-10-03"}; /* сб — пробный бокс, силовая А переезжает на вс */
+var OVERRIDE={"2026-10-02":"R","2026-10-03":"BX","2026-10-04":"@2026-10-03"}; /* сб — пробный бокс, силовая А переезжает на вс */
 function planFor(d){
   var o=OVERRIDE[key(d)];
   if(o)return o.charAt(0)==="@"?basePlan(parseKey(o.slice(1))):o;
